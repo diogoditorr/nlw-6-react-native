@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
         height: 360,
     },
     content: {
-        marginTop: -40,
+        marginTop: -50,
         paddingHorizontal: 50,
     },
     title: {
