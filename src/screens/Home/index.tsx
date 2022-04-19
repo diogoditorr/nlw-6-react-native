@@ -51,7 +51,7 @@ export default function Home() {
     function handleAppointmentDetails() {
         navigation.navigate("AppointmentDetails");
     }
-    
+
     function handleAppointmentCreate() {
         navigation.navigate("AppointmentCreate");
     }
@@ -60,7 +60,7 @@ export default function Home() {
         <Background>
             <View style={styles.header}>
                 <Profile />
-                <ButtonAdd onPress={handleAppointmentCreate}/>
+                <ButtonAdd onPress={handleAppointmentCreate} />
             </View>
 
             <CategorySelect
@@ -68,23 +68,22 @@ export default function Home() {
                 setCategory={handleCategorySelect}
             />
 
-            <View style={styles.content}>
-                <ListHeader title="Partidas agendadas" subtitle="Total 6" />
+            <ListHeader title="Partidas agendadas" subtitle="Total 6" />
 
-                <FlatList
-                    data={appointments}
-                    keyExtractor={(item) => item.id}
-                    renderItem={({ item }) => (
-                        <Appointment
-                            onPress={handleAppointmentDetails}
-                            data={item}
-                        />
-                    )}
-                    showsVerticalScrollIndicator={false}
-                    ItemSeparatorComponent={() => <ListDivider />}
-                    style={styles.matches}
-                />
-            </View>
+            <FlatList
+                data={appointments}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) => (
+                    <Appointment
+                        onPress={handleAppointmentDetails}
+                        data={item}
+                    />
+                )}
+                ItemSeparatorComponent={() => <ListDivider />}
+                showsVerticalScrollIndicator={false}
+                contentContainerStyle={{ paddingBottom: 70 }}
+                style={styles.matches}
+            />
         </Background>
     );
 }

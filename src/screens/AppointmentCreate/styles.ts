@@ -30,11 +30,15 @@ export const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
     },
+    imageContainer: {
+
+    },
     image: {
         width: 64,
         height: 68,
-        backgroundColor: theme.colors.secondary50,
+        borderColor: theme.colors.secondary50,
         borderWidth: 1,
+        borderLeftWidth: 0,
         borderRadius: 8,
     },
     field: {

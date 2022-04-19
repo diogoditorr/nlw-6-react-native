@@ -1,40 +1,38 @@
-import { Fontisto } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 import React, { useState } from "react";
 import {
-    FlatList,
-    ImageBackground,
     KeyboardAvoidingView,
     Platform,
     ScrollView,
     Text,
     View,
 } from "react-native";
-import { BorderlessButton, RectButton } from "react-native-gesture-handler";
-import BannerImg from "../../assets/banner.png";
+import { RectButton } from "react-native-gesture-handler";
 import Background from "../../components/Background";
-import ButtonIcon from "../../components/ButtonIcon";
+import Button from "../../components/Button";
 import CategorySelect from "../../components/CategorySelect";
-import Header from "../../components/Header";
-import ListDivider from "../../components/ListDivider";
-import ListHeader from "../../components/ListHeader";
-import Member from "../../components/Member";
-import { theme } from "../../global/styles/theme";
-import { styles } from "./styles";
-import { Feather } from "@expo/vector-icons";
+import { GuildProps } from "../../components/Guild";
 import GuildIcon from "../../components/GuildIcon";
+import Header from "../../components/Header";
+import ModalView from "../../components/ModalView";
 import SmallInput from "../../components/SmallInput";
 import TextArea from "../../components/TextArea";
-import Button from "../../components/Button";
-import ModalView from "../../components/ModalView";
+import { theme } from "../../global/styles/theme";
 import Guilds from "../Guilds";
-import { GuildProps } from "../../components/Guild";
+import { styles } from "./styles";
 export default function AppointmentCreate() {
     const [category, setCategory] = useState("");
     const [openGuildsModal, setOpenGuildsModal] = useState(false);
     const [guild, setGuild] = useState<GuildProps>({} as GuildProps);
+    const { secondary50, secondary75 } = theme.colors;
 
     function handleOpenGuilds() {
         setOpenGuildsModal(true);
+    }
+
+    function handleCloseGuilds() {
+        setOpenGuildsModal(false);
     }
 
     function handleGuildSelect(guildSelect: GuildProps) {
@@ -42,13 +40,17 @@ export default function AppointmentCreate() {
         setOpenGuildsModal(false);
     }
 
+    function handleCategorySelect(categoryId: string) {
+        setCategory(categoryId);
+    }
+
     return (
         <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={styles.container}
         >
-            <ScrollView>
-                <Background>
+            <Background>
+                <ScrollView>
                     <Header title="Agendar partida" />
 
                     <Text
@@ -62,7 +64,7 @@ export default function AppointmentCreate() {
 
                     <CategorySelect
                         hasCheckBox
-                        setCategory={setCategory}
+                        setCategory={handleCategorySelect}
                         categorySelected={category}
                     />
 
@@ -72,7 +74,10 @@ export default function AppointmentCreate() {
                                 {guild.icon ? (
                                     <GuildIcon />
                                 ) : (
-                                    <View style={styles.image} />
+                                    <LinearGradient
+                                        style={styles.image}
+                                        colors={[secondary75, secondary50]}
+                                    />
                                 )}
 
                                 <View style={styles.selectBody}>
@@ -93,7 +98,11 @@ export default function AppointmentCreate() {
 
                         <View style={styles.field}>
                             <View>
-                                <Text style={styles.label}>Dia e mês</Text>
+                                <Text
+                                    style={[styles.label, { marginBottom: 12 }]}
+                                >
+                                    Dia e mês
+                                </Text>
 
                                 <View style={styles.column}>
                                     <SmallInput maxLength={2} />
@@ -103,7 +112,11 @@ export default function AppointmentCreate() {
                             </View>
 
                             <View>
-                                <Text style={styles.label}>Hora e minuto</Text>
+                                <Text
+                                    style={[styles.label, { marginBottom: 12 }]}
+                                >
+                                    Hora e minuto
+                                </Text>
 
                                 <View style={styles.column}>
                                     <SmallInput maxLength={2} />
@@ -132,10 +145,10 @@ export default function AppointmentCreate() {
                             <Button title="Agendar" />
                         </View>
                     </View>
-                </Background>
-            </ScrollView>
+                </ScrollView>
+            </Background>
 
-            <ModalView visible={openGuildsModal}>
+            <ModalView visible={openGuildsModal} closeModal={handleCloseGuilds}>
                 <Guilds handleGuildSelect={handleGuildSelect} />
             </ModalView>
         </KeyboardAvoidingView>

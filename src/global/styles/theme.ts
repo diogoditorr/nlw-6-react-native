@@ -8,7 +8,7 @@ export const theme = {
       secondary75: '#171F52',
       secondary70: '#1B2565',
       secondary60: '#1B2565',
-      secondary50: '#243189', 
+      secondary50: '#243189',
       secondary40: '#1D2766', 
       secondary30: '#495BCC', 
      

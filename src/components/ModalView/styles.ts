@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
         borderTopRightRadius: 20,
         borderTopLeftRadius: 20,
         overflow: 'hidden',
-        marginTop: 36,
+        marginTop: 100,
     },
     bar: {
         width: 45,
