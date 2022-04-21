@@ -5,10 +5,9 @@ import AppointmentCreate from "../screens/AppointmentCreate";
 import AppointmentDetails from "../screens/AppointmentDetails";
 import Home from "../screens/Home";
 
-
 const Stack = createNativeStackNavigator();
 
-export function AuthRoutes() {
+export function AppRoutes() {
     return (
         <Stack.Navigator
             screenOptions={{

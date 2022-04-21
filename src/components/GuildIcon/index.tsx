@@ -1,14 +1,38 @@
 import React from "react";
 import { Image, Text, View } from "react-native";
+import { CDN_IMAGE } from "../../configs/discordAuth";
 import { styles } from "./styles";
+import DiscordSvg from "../../assets/discord.svg";
+import { theme } from "../../global/styles/theme";
 
-export default function GuildIcon() {
-    const uri = 'https://cdn.vox-cdn.com/thumbor/8OLcqMqbLR7Hwv91eodAB1Q94pU=/1400x1050/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19816263/acastro_200318_1777_discord_0001.0.jpg';
+type Props = {
+    guildId: string;
+    iconId: string | null;
+};
+
+export default function GuildIcon({ guildId, iconId }: Props) {
+    const uri = `${CDN_IMAGE}/icons/${guildId}/${iconId}.png`;
+
     return (
-        <Image 
-            source={{ uri }}
-            resizeMode="cover"
-            style={styles.image} 
-            />
+        <>
+            {iconId ? (
+                <View style={styles.container}>
+                    <Image
+                        source={{ uri }}
+                        resizeMode="cover"
+                        style={styles.image}
+                    />
+                </View>
+            ) : (
+                <View
+                    style={[
+                        styles.container,
+                        { backgroundColor: theme.colors.discord },
+                    ]}
+                >
+                    <DiscordSvg width={40} height={40} />
+                </View>
+            )}
+        </>
     );
 }

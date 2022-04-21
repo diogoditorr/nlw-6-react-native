@@ -9,10 +9,12 @@ export const styles = StyleSheet.create({
     },
     content : {
         flex: 1,
+        // width: '100%',
         marginLeft: 20,
     },
     header: {
         width: '100%',
+        // flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginBottom: 12,

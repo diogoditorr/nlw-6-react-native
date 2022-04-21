@@ -1,0 +1,7 @@
+Challenges:
+    ☐ Implementar o modal de logout
+
+Miscellaneous:
+    ☐ Limitar o número de caracteres do nome do servidor quando mostrado na home
+    ☐ Ordernar a lista de membros de servidor por status no AppointmentDetails
+    ☐ Atualizar o ícone do discord no botão de "Entrar na partida" e "Conectar com o Discord"
